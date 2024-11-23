@@ -1,37 +1,38 @@
 import React, { useEffect, useState } from 'react';
 
 interface Ayah {
+  number: number;
+  text: string;
+  numberInSurah: number;
+  juz: number;
+  manzil: number;
+  page: number;
+  ruku: number;
+  hizbQuarter: number;
+  sajda: boolean;
+}
+
+interface SurahData {
+  code: number;
+  status: string;
+  data: {
     number: number;
-    text: string;
-    numberInSurah: number;
-    juz: number;
-    manzil: number;
-    page: number;
-    ruku: number;
-    hizbQuarter: number;
-    sajda: boolean;
-  }
-  
-  interface SurahData {
-    code: number;
-    status: string;
-    data: {
-      number: number;
-      name: string;
-      englishName: string;
-      englishNameTranslation: string;
-      revelationType: string;
-      numberOfAyahs: number;
-      ayahs: Ayah[];
-    };
-  }  
+    name: string;
+    englishName: string;
+    englishNameTranslation: string;
+    revelationType: string;
+    numberOfAyahs: number;
+    ayahs: Ayah[];
+  };
+}
 
 interface RenderSurahsProps {
   selectedSurah: string;
 }
 
 const RenderSurahs: React.FC<RenderSurahsProps> = ({ selectedSurah }) => {
-  const [surahData, setSurahData] = useState<SurahData[] | null>([]);
+  // Change type of surahData to reflect that it is an object, not an array
+  const [surahData, setSurahData] = useState<SurahData["data"] | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -46,14 +47,13 @@ const RenderSurahs: React.FC<RenderSurahsProps> = ({ selectedSurah }) => {
       fetch(`https://api.alquran.cloud/v1/surah/${selectedSurah}`)
         .then((response) => response.json())
         .then((data) => {
-          setSurahData(data.data); // Assuming the API returns the Surah data in the 'data' field
+          setSurahData(data.data); // Use data.data to set the correct object
           setLoading(false);
         })
         .catch((err) => {
           setError('Failed to fetch Surah data');
           console.error(err);
           setLoading(false);
-          return <div>Error: {err.message}</div>;
         });
     }
   }, [selectedSurah]);
