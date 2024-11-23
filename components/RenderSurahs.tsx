@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
+// Define Ayah interface
 interface Ayah {
   number: number;
   text: string;
@@ -12,6 +13,7 @@ interface Ayah {
   sajda: boolean;
 }
 
+// Define the API response structure
 interface SurahData {
   code: number;
   status: string;
@@ -31,33 +33,37 @@ interface RenderSurahsProps {
 }
 
 const RenderSurahs: React.FC<RenderSurahsProps> = ({ selectedSurah }) => {
-  // Change type of surahData to reflect that it is an object, not an array
+  // Type surahData as the 'data' object from the API response
   const [surahData, setSurahData] = useState<SurahData["data"] | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     if (selectedSurah) {
-      // Reset the state when the selectedSurah changes
-      setLoading(true);
-      setError(null);
-      setSurahData(null);
+      setLoading(true);  // Start loading
+      setError(null);     // Clear previous errors
+      setSurahData(null); // Clear previous data
 
-      // Fetch Surah data
+      // Fetch Surah data from the API
       fetch(`https://api.alquran.cloud/v1/surah/${selectedSurah}`)
         .then((response) => response.json())
         .then((data) => {
-          setSurahData(data.data); // Use data.data to set the correct object
-          setLoading(false);
+          if (data && data.data) {
+            setSurahData(data.data);  // Use the 'data' field from the API response
+          } else {
+            throw new Error('Invalid response structure');
+          }
+          setLoading(false);  // Finished loading
         })
         .catch((err) => {
-          setError('Failed to fetch Surah data');
-          console.error(err);
-          setLoading(false);
+          setError('Failed to fetch Surah data');  // Set error message
+          console.error(err);  // Log error for debugging
+          setLoading(false);  // Finished loading
         });
     }
-  }, [selectedSurah]);
+  }, [selectedSurah]);  // Re-run the effect when selectedSurah changes
 
+  // Return different UI based on loading, error, or data states
   if (loading) {
     return <div>Loading...</div>;
   }
@@ -85,8 +91,8 @@ const RenderSurahs: React.FC<RenderSurahsProps> = ({ selectedSurah }) => {
       <div>
         {surahData.ayahs.map((ayah: Ayah) => (
           <div key={ayah.numberInSurah} className="mb-6 hover:text-[white] hover:bg-black py-2 px-2">
-            <div className="mb-2 ">
-              <p className="text-2xl ">
+            <div className="mb-2">
+              <p className="text-2xl">
                 <strong className='text-xs text-gray-500'>{surahData.number}:{ayah.numberInSurah}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong>
                 {ayah.text}
                 {ayah.sajda && (
