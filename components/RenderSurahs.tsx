@@ -51,7 +51,9 @@ const RenderSurahs: React.FC<RenderSurahsProps> = ({ selectedSurah }) => {
         })
         .catch((err) => {
           setError('Failed to fetch Surah data');
+          console.error(err);
           setLoading(false);
+          return <div>Error: {err.message}</div>;
         });
     }
   }, [selectedSurah]);

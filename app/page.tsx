@@ -25,6 +25,7 @@ const App = () => {
       <div className="text-center mb-6">
         <h1 className="text-6xl font-extrabold text-black">My Quran App</h1>
         <p className="text-lg text-gray-700 mt-2">Please select a Version</p>
+        <p>Selected Edition: {selectedEdition}</p>
         <Edition onEditionChange={handleEditionChange}/>
       </div>
 
