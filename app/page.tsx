@@ -34,7 +34,7 @@ const App = () => {
         <div className='flex flex-row w-full items-start bg-black text-white'>
         <button 
         onClick={handlebuttonListToggle}
-        className='text-center flex flex-row border-solid border-white border-2 m-1 p-1 w-1/6'
+        className='text-center flex flex-row border-solid border-white border-2 m-1 p-1 w-1/6 md:w-1/4 sm:w-1/2'
         >
         {listToggle ? 'Click Here To Close Surah List' : 'Click Here For Surah List'}
         </button>
