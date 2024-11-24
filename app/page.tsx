@@ -25,7 +25,7 @@ const App = () => {
     setListToggle((previousValue) => !previousValue);
   } //on button click Toggle the state between true and false
   return (
-    <div className="flex flex-col justify-center   text-center  bg-gray-100">
+    <div className="flex flex-col justify-center w-full max-w-screen  text-center  bg-gray-100">
       {/* Main Header Section */}
       <div className="text-center mb-2">
         
@@ -34,7 +34,7 @@ const App = () => {
         <div className='flex flex-row w-full items-start bg-black text-white'>
         <button 
         onClick={handlebuttonListToggle}
-        className='border-solid border-white border-2 m-1 p-1 w-1/5'
+        className='flex flex-row border-solid border-white border-2 m-1 p-1 w-1/5'
         >
         {listToggle ? 'Click Here To Close Surah List' : 'Click Here For Surah List'}
         </button>
