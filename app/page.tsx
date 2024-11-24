@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import Edition from '../components/Edition';
 import SurahButtons from '../components/SurahButtons';
 import RenderSurahs from '@/components/RenderSurahs';
-import { Container } from 'postcss';
+
 
 const App = () => {
   // Parent state for the currently selected edition
@@ -29,7 +29,7 @@ const App = () => {
       {/* Main Header Section */}
       <div className="text-center mb-2">
         
-        <p className="text-lg w-full text-gray-700 mt-2">Please select a Version</p>
+        <p className="text-lg w-full text-gray-700 mt-2">Please select a Version{selectedEdition}</p>
         <Edition onEditionChange={handleEditionChange}/>
         <div className='flex flex-row w-full items-start bg-black text-white'>
         <button 
