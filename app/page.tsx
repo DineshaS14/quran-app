@@ -34,7 +34,7 @@ const App = () => {
         <div className='flex flex-row w-full items-start bg-black text-white'>
         <button 
         onClick={handlebuttonListToggle}
-        className='flex flex-row border-solid border-white border-2 m-1 p-1 w-1/5'
+        className='text-center flex flex-row border-solid border-white border-2 m-1 p-1 w-1/6'
         >
         {listToggle ? 'Click Here To Close Surah List' : 'Click Here For Surah List'}
         </button>
@@ -46,7 +46,7 @@ const App = () => {
       <div className="flex flex-row flex-grow  w-full mt-5">
         {/* Left Section: Surah Buttons */}
         {listToggle && (
-          <div className="flex flex-col w-1/5 items-start space-y-4 max-h-[700px] overflow-y-auto">
+          <div className="flex flex-col w-1/5  space-y-4 max-h-[700px] overflow-y-auto">
           <SurahButtons onSurahChange={handleSurahChange} />
         </div>
         )}

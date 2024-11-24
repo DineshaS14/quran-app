@@ -90,7 +90,7 @@ const RenderSurahs: React.FC<RenderSurahsProps> = ({ selectedSurah }) => {
       {/* Ayah Lines */}
       <div>
         {surahData.ayahs.map((ayah: Ayah) => (
-          <div key={ayah.numberInSurah} className="mb-6 hover:text-[white] hover:bg-black py-2 px-2">
+          <div key={ayah.numberInSurah} className="mb-6 cursor-pointer hover:text-[white] hover:bg-black py-2 px-2">
             <div className="mb-2">
               <p className="lg:text-4xl md:text-2xl sm:text-xl">
                 <strong className='text-xs text-gray-500'>{surahData.number}:{ayah.numberInSurah}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong>
