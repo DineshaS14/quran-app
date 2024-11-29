@@ -89,7 +89,7 @@ export default function PrayerTimes() {
         timezone: data.timezone,
       });
       setTypedCityName(city);
-      fetchPrayerTimes(data.latitude, data.longitude, data.timezone); 
+      fetchPrayerTimes(data.latitude, data.longitude); 
       // Calls `fetchPrayerTimes` with location details.
     } catch (error) {
       setIsError(true); // Show error state.
