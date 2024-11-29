@@ -100,7 +100,7 @@ export default function PrayerTimes() {
   };
 
   // Fetches prayer times for the provided coordinates and timezone
-  const fetchPrayerTimes = async (latitude: number, longitude: number, timezone: string) => {
+  const fetchPrayerTimes = async (latitude: number, longitude: number) => {
     try {
       const response = await fetch(
         `${ALADHAN_API_BASE_URL}?latitude=${latitude}&longitude=${longitude}&method=2`

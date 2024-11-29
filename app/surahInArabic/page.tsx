@@ -27,7 +27,7 @@ interface Surah {
   ayahs: Ayah[];
 }
 
-const surahInArabic = () => {
+const SurahInArabic = () => {
   const [selectedEdition] = useState<string>('en.asad'); // Selected edition
   const [selectedSurah, setSelectedSurah] = useState<number | null>(1); // Selected Surah number
   const [surahDetails, setSurahDetails] = useState<Surah | null>(null); // Fetched Surah details
@@ -165,4 +165,4 @@ const surahInArabic = () => {
   );
 };
 
-export default surahInArabic;
+export default SurahInArabic;

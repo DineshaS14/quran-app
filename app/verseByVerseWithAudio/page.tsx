@@ -34,7 +34,7 @@ interface Surah {
   ayahs: Ayah[];
 }
 
-const QuranApp = () => {
+const VerseByVerseWithAudio = () => {
   const [editions, setEditions] = useState<Edition[]>([]); // Holds list of audio editions
   const [selectedEdition, setSelectedEdition] = useState<Edition | null>(null); // Selected edition object
   const [selectedSurah, setSelectedSurah] = useState<number | null>(null); // Selected Surah number
@@ -205,4 +205,4 @@ const QuranApp = () => {
   );
 };
 
-export default QuranApp;
+export default VerseByVerseWithAudio;
